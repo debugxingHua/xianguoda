@@ -1,0 +1,9 @@
+<view class="logo">
+  <image src="{{imagesUrl}}/1.jpg" class="logo-icon"></image>
+</view>
+<view class="header-name">长与专业靓仔服务</view>
+<button class="login-btn"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >
+  <!-- <image class="w_56 h_56 mt20 fl ml125" src="{{imagesUrl}}/2.png"></image> -->
+  <view class="h_22 ml20 fs36 color_f textAlign_c fl">微信账号快捷登录</view>
+</button>
+<view class="h_44 textAlign_c color_6BB0FF fontFamily_R fs32 mt30" bindtap="navigateLogIn">输入手机号码登录/注册</view>
