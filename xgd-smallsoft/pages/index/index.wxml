@@ -6,7 +6,7 @@
     </view>
     <view class="gundong">
         <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
-            <block wx:for="{{msgList}}">
+            <block wx:for="{{msgList}}" wx:key="key">
                 <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
                     <swiper-item>
                         <view class="swiper_item">{{item.title}}</view>
@@ -19,7 +19,7 @@
 <!-- 图片滚动区域 -->
 <view class="picturegundong">
     <swiper class="swiper_container_pic" autoplay="true" circular="true" interval="2000">
-        <block wx:for="{{imgList}}">
+        <block wx:for="{{imgList}}" wx:key="key">
             <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
                 <swiper-item>
                     <image class="img" src="{{item.src}}"></image>
