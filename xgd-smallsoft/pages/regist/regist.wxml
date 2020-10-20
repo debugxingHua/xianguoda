@@ -1,3 +1,0 @@
-<!--pages/regist/regist.wxml-->
-<text>pages/regist/regist.wxml</text>
-<text>收到值:{{agentCode}}</text>

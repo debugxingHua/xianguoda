@@ -33,7 +33,10 @@ App({
       }
     })
   },
+  onShow:function(options){},
+  onHide: function() {},
+  onError: function(msg) {},
   globalData: {
-    userInfo: null
+    userInfo: 'i am songyanan appjs'
   }
 })

@@ -1,45 +1,14 @@
-page {
-    font-size: 28rpx;
-    min-height: 0px ;
-  }
-  .logo{
-    background: #FFFFFF;
-    box-shadow: 0 4rpx 16px 0 rgba(153,153,153,0.3);
-    margin-left: 284rpx ;
-    margin-top: 40rpx ;
-    width: 180rpx ;
-    height: 180rpx ;
-    border-radius: 180rpx ;
-  }
-  .logo-icon {
-    width: 210rpx;
-    height: 210rpx;
-    margin-left: -8px;
-    margin-top: -6px; 
-  }
-  .header-name {
-    margin-top: 40rpx ;
-    margin-left: 232rpx ;
-    width: 286rpx ;
-    height: 50rpx ;
-    font-family: PingFangSC-Medium;
-    font-size: 36rpx;
-    color: #333333;
-    letter-spacing: -0.2px;
-    text-align: center;
-    font-weight: bold;
-  }
-  .login-btn {
-    width: 670rpx ;
-    height: 96rpx ;
-    margin-top: 180rpx ;
-    margin-left: 40rpx ;
-    margin-right: 40rpx ;
-    background: #0BB20B;
-    border-radius: 24px;
-    font-family: PingFangSC-Regular;
-    font-size: 36rpx;
-    color: #FFFFFF;
-    line-height: 96rpx ;
-    text-align: center;
-  }
+.content {
+  margin-left: 50rpx;
+  margin-bottom: 90rpx;
+}
+.content text {
+  display: block;
+  color: #9d9d9d;
+  margin-top: 40rpx;
+}
+.bottom {
+  border-radius: 80rpx;
+  margin: 70rpx 50rpx;
+  font-size: 35rpx;
+}

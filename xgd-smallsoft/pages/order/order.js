@@ -1,32 +1,25 @@
-// pages/regist/regist.js
+// pages/order/order.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    agentCode : ""
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
-    console.log(options);
-    if(options!=undefined && options.agentCode !=undefined){
-      this.data.agentCode = options.agentCode;
-    }
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log(this.data.agentCode);
-    this.setData({
-      agentCode : this.data.agentCode
-    });
+
   },
 
   /**

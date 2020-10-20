@@ -3,7 +3,7 @@
    
   },
   "disableScroll": true,
-  "navigationBarTitleText": "鲜果达",
+  "navigationBarTitleText": "个人中心",
+  "navigationBarBackgroundColor": "#10AC8D",
   "navigationBarTextStyle": "black"
-  
 }

@@ -1,13 +1,40 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<!-- pages/order/order.wxml -->
+<!-- 喇叭和文字区域 -->
+<view class="contronar">
+    <view class="laba">
+        <image src="../../images/horn.jpg"></image>
+    </view>
+    <view class="gundong">
+        <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+            <block wx:for="{{msgList}}">
+                <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+                    <swiper-item>
+                        <view class="swiper_item">{{item.title}}</view>
+                    </swiper-item>
+                </navigator>
+            </block>
+        </swiper>
+    </view>
+</view>
+<!-- 图片滚动区域 -->
+<view class="picturegundong">
+    <swiper class="swiper_container_pic" autoplay="true" circular="true" interval="2000">
+        <block wx:for="{{imgList}}">
+            <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+                <swiper-item>
+                    <image class="img" src="{{item.src}}"></image>
+                </swiper-item>
+            </navigator>
+        </block>
+    </swiper>
+</view>
+<!-- 优惠卷区域 -->
+<view class="youhuijuan">
+  <view><image class="img2" src="../../images/youhuijuan.jpg" /></view>
+  <view><image class="img2"  src="../../images/youhuijuan.jpg" /></view>
+  <view><image class="img2"  src="../../images/youhuijuan.jpg" /></view>
+</view>
+<!-- 限时拼团 -->
+<view class="TimeSpellGroup">
+  <view>限时拼团</view>
 </view>
