@@ -3,7 +3,7 @@
    
   },
   "disableScroll": true,
-  "navigationBarTitleText": "登录",
+  "navigationBarTitleText": "授权登录",
   "navigationBarBackgroundColor": "#10AC8D",
   "navigationBarTextStyle": "white"
 }

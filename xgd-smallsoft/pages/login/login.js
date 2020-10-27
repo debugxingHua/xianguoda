@@ -5,77 +5,124 @@ Page({
    * 页面的初始数据
    */
   data: {
-    canIUse: wx.canIUse('button.open-typewx.getUserInfo())'),
-    isHide: false
+    //获取用户信息在当前版本可用
+    canIUse: wx.canIUse('button.open-typewx.getUserInfo())')
   },
-
-
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onLoad: function () {
-    // 查看是否授权
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              console.log(res.userInfo)
-              wx.login({
-                success: res => {
-                  // 获取到用户的 code 之后：res.code
-                  console.log("用户的code:" + res.code);
-                  // 可以传给后台，再经过解析获取用户的 openid
-                  // 或者可以直接使用微信的提供的接口直接获取 openid ，方法如下：
-                  // wx.request({
-                  //     // 自行补上自己的 APPID 和 SECRET
-                  //     url: 'https://api.weixin.qq.com/sns/jscode2session?appid=自己的APPID&secret=自己的SECRET&js_code=' + res.code + '&grant_type=authorization_code',
-                  //     success: res => {
-                  //         // 获取到用户的 openid
-                  //         console.log("用户的openid:" + res.data.openid);
-                  //     }
-                  // });
-                }
-              });
-            }
-          })
-        } else {
-          // 用户没有授权
-          // 改变 isHide 的值，显示授权页面
-          that.setData({
-            isHide: true
-          });
-        }
+
+  },
+  //登陆
+  bindGetUserInfo: function (e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.userInfo)
+    console.log(e.detail.rawData)
+
+    wx.login({
+      success: function (res) {
+        console.log(res)
+        console.log('aaaa')
+        //获取登录的临时凭证
+        var code = res.code;
+        console.log('bbbb')
+        //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
+        //给全局参数赋值
+        app.globalData.isHide=false;
+        wx.switchTab({
+          url: '../my/my',
+        })
+        console.log('ccc')
       }
     })
-  },
-  bindGetUserInfo(e) {
-    console.log(e.detail.userInfo)
-    if (e.detail.userInfo) {
-      //用户按了允许授权按钮
-      var that = this;
-      // 获取到用户的信息了，打印到控制台上看下
-      console.log("用户的信息如下：");
-      console.log(e.detail.userInfo);
-      //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
-      that.setDate({ isHide: false });
-    } else {
-      //用户拒绝了授权
-      wx.showModal({
-        title: '警告',
-        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
-        showCancel: false,
-        confirmText: '返回授权',
-        success(res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
-        }
-      })
-    }
   }
+
+  /*  onLoad: function () {
+     if (app.globalData.userInfo) {
+       this.setData({
+         userInfo: app.globalData.userInfo,
+         hasUserInfo: true
+       })
+     } else if (this.data.canIUse) {
+       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+       // 所以此处加入 callback 以防止这种情况
+       app.userInfoReadyCallback = res => {
+         this.setData({
+           userInfo: res.userInfo,
+           hasUserInfo: true
+         })
+       }
+     } else {
+       // 在没有 open-type=getUserInfo 版本的兼容处理
+       wx.getUserInfo({
+         success: res => {
+           app.globalData.userInfo = res.userInfo
+           this.setData({
+             userInfo: res.userInfo,
+             hasUserInfo: true
+           })
+         }
+       })
+     }
+   },
+   getUserInfo: function (e) {
+     app.globalData.userInfo = e.detail.userInfo
+     this.setData({
+       userInfo: e.detail.userInfo,
+       hasUserInfo: true
+     })
+   },
+   //按钮的点击事件
+   bindGetUserInfo: function (res) {
+     let info = res;
+     console.log(info);
+     if (info.detail.userInfo) {
+       console.log("点击了同意授权");
+       var that = this
+       wx.login({
+         success: function (res) {
+           wx.switchTab({
+ 
+             url: '../my/my',
+           })
+           if (res.code) {
+             wx.request({
+               data: {
+                 code: res.code,
+                 user_info: info.detail.userInfo
+               },
+               header: {
+                 'content-type': 'application/json' // 默认值
+               },
+               success: function (res) {
+                 var userinfo = {};
+                 userinfo['id'] = res.data.id;
+                 userinfo['nickName'] = info.detail.userInfo.nickName;
+                 userinfo['avatarUrl'] = info.detail.userInfo.avatarUrl;
+                 userinfo['user_data'] = res.data;
+                 wx.setStorageSync('userinfo', userinfo)
+                 that.setData({
+                   userInfo: info.detail.userInfo
+                 })
+               }
+             })
+           } else {
+             console.log("授权失败");
+           }
+         },
+       })
+ 
+     } else {
+       //用户按了拒绝按钮
+       wx.showModal({
+         title: '警告',
+         content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
+         showCancel: false,
+         confirmText: '返回授权',
+         success: function (res) {
+           if (res.confirm) {
+             console.log('用户点击了“返回授权”')
+           }
+         }
+       })
+     }
+   } */
 })

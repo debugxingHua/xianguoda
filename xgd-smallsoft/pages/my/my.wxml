@@ -1,16 +1,21 @@
 <!-- pages/order/order.wxml -->
- <!-- 登陆的样式 -->
-<view wx:if="{{loginIsHide}}}">
-    <view class="box">
-        <view class="home_top">
-         <image src="../../images/Login.jpg" />
-         <view class="home_font" bindtap = "jump">登录/注册</view>
+<!-- 登陆的样式 -->
+<view wx:if="{{isHide}}">
+    <view wx:if="{{canIUse}}">
+        <view class="box">
+            <view class="home_top">
+                <image src="../../images/Login.jpg" />
+                <view class="home_font" bindtap="jump">登录/注册</view>
+            </view>
         </view>
     </view>
 </view>
 <view wx:else>
     <!-- 登陆成功的样式 -->
-    <view class="head">
-        <text>11111</text>
+    <view class="box">
+        <view class="home_top">
+            <image src="{{userInfo.avatarUrl}}" />
+            <view class="home_font">{{userInfo.nickName}}</view>
+        </view>
     </view>
 </view>

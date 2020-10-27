@@ -1,40 +1,65 @@
-<!-- pages/order/order.wxml -->
-<!-- 喇叭和文字区域 -->
-<view class="contronar">
-    <view class="laba">
-        <image src="../../images/horn.jpg"></image>
+<view wx:if="{{isHide}}">
+    <view wx:if="{{canIUse}}" >
+        <view class='header'>
+            <image src='../..//images/index.png'></image>
+        </view>
+ 
+        <view class='content'>
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+        </view>
+ 
+        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+            授权登录
+        </button>
     </view>
-    <view class="gundong">
-        <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
-            <block wx:for="{{msgList}}" wx:key="key">
+    <view wx:else>请升级微信版本</view>
+</view>
+ 
+<view wx:else>
+    <!-- 喇叭和文字区域 -->
+    <view class="contronar">
+        <view class="laba">
+            <image src="../../images/horn.jpg"></image>
+        </view>
+        <view class="gundong">
+            <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+                <block wx:for="{{msgList}}" wx:key="key">
+                    <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+                        <swiper-item>
+                            <view class="swiper_item">{{item.title}}</view>
+                        </swiper-item>
+                    </navigator>
+                </block>
+            </swiper>
+        </view>
+    </view>
+    <!-- 图片滚动区域 -->
+    <view class="picturegundong">
+        <swiper class="swiper_container_pic" autoplay="true" circular="true" interval="2000">
+            <block wx:for="{{imgList}}" wx:key="key">
                 <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
                     <swiper-item>
-                        <view class="swiper_item">{{item.title}}</view>
+                        <image class="img" src="{{item.src}}"></image>
                     </swiper-item>
                 </navigator>
             </block>
         </swiper>
     </view>
-</view>
-<!-- 图片滚动区域 -->
-<view class="picturegundong">
-    <swiper class="swiper_container_pic" autoplay="true" circular="true" interval="2000">
-        <block wx:for="{{imgList}}" wx:key="key">
-            <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
-                <swiper-item>
-                    <image class="img" src="{{item.src}}"></image>
-                </swiper-item>
-            </navigator>
-        </block>
-    </swiper>
-</view>
-<!-- 优惠卷区域 -->
-<view class="youhuijuan">
-  <view><image class="img2" src="../../images/youhuijuan.jpg" /></view>
-  <view><image class="img2"  src="../../images/youhuijuan.jpg" /></view>
-  <view><image class="img2"  src="../../images/youhuijuan.jpg" /></view>
-</view>
-<!-- 限时拼团 -->
-<view class="TimeSpellGroup">
-  <view>限时拼团</view>
+    <!-- 优惠卷区域 -->
+    <view class="youhuijuan">
+        <view>
+            <image class="img2" src="../../images/youhuijuan.jpg" />
+        </view>
+        <view>
+            <image class="img2" src="../../images/youhuijuan.jpg" />
+        </view>
+        <view>
+            <image class="img2" src="../../images/youhuijuan.jpg" />
+        </view>
+    </view>
+    <!-- 限时拼团 -->
+    <view class="TimeSpellGroup">
+        <view>限时拼团</view>
+    </view>
 </view>

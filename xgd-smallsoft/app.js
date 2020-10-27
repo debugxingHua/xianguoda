@@ -37,6 +37,7 @@ App({
   onHide: function() {},
   onError: function(msg) {},
   globalData: {
-    userInfo: 'i am songyanan appjs'
+    userInfo: 'i am songyanan appjs',
+    isHide:''
   }
 })
