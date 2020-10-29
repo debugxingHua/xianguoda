@@ -13,9 +13,54 @@
 <view wx:else>
     <!-- 登陆成功的样式 -->
     <view class="box">
+        <!-- 登陆成功的头像和昵称 -->
         <view class="home_top">
             <image src="{{userInfo.avatarUrl}}" />
             <view class="home_font">{{userInfo.nickName}}</view>
+        </view>
+        <!-- 登陆成功的签到有礼 -->
+        <view class="Courtesy">
+            <view class="Courtesy_img">
+                <image src="../../images/Login.jpg" />
+            </view>
+            <view class="Courtesy_font">
+                <view>签到有礼</view>
+                <view class="Courtesy_font2">每日签到赢鲜豆，赚到鲜豆当钱花</view>
+            </view>
+            <navigator class="Courtesy_qiandao" url="/pages/order/order" open-type="switchTab" hover-class="other-navigator-hover">
+                去签到>
+            </navigator>
+        </view>
+        <!--优惠卷的图片 -->
+        <image class="img"  src="../../images/timg.jpg" />
+        <!-- 优惠卷/鲜豆/礼品卡/收货地址 -->
+        <view class="hr"></view>
+        <view class='item'>
+            <view class="title">优惠卷</view>
+            <view class="detail2">
+                <text>></text>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class='item'>
+            <view class="title">鲜豆</view>
+            <view class="detail2">
+                <text>></text>
+            </view>
+        </view>
+         <view class="line"></view>
+        <view class='item'>
+            <view class="title">礼品卡</view>
+            <view class="detail2">
+                <text>></text>
+            </view>
+        </view>
+         <view class="line"></view>
+        <view class='item'>
+            <view class="title">收货地址</view>
+            <view class="detail2">
+                <text>></text>
+            </view>
         </view>
     </view>
 </view>
